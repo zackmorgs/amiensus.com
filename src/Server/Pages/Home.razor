@@ -1,0 +1,43 @@
+﻿@page "/"
+
+@using Microsoft.AspNetCore.Components.Web
+@using Client.Components;
+@using AntDesign.Icons;
+
+<PageTitle>Home</PageTitle>
+
+<link rel="stylesheet" href="/css/pages/home.css" />
+
+<section id="hero_container">
+    <div class="hero">
+        <div class="hero-content z-10">
+            <h1 class="text-2xl mb-6 md:text-3xl">NEURAL AMP MODELER</h1>
+            <div id="hero_main_img">
+                <img id="" class="my-2 rounded mx-auto w-full mb-4" style="max-width:784px" accesskey=""
+                    src="/img/nam-5150.webp" alt="NAM instance - 5150" />
+            </div>
+
+            <p class="lg:mt-6"><b>Neural Amp Modeler</b> is an open-source project that uses deep learning to create
+                models of guitar
+                amplifiers and pedals with state-of-the-art accuracy.</p>
+            <a class="btn btn-primary" href="/download">
+                Download
+            </a>
+            <br />
+            <a class="btn btn-secondary btn-sm" href="/nam-online">
+                Play Online
+            </a>
+            @* <a href="/models/new" class="btn btn-tertiary btn-sm">
+                <span class="icon">+</span><span>Create NAM Models</span>
+            </a> *@
+            @* <a href="/models/new" class="btn btn-tertiary btn-sm">
+                <SearchOutlined /><span>Search NAM Models</span>
+            </a> *@
+        </div>
+
+    </div>
+</section>
+<Showcase/>
+<Code/>
+<NAMPowered />
+

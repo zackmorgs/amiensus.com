@@ -1,0 +1,44 @@
+@page "/download"
+
+@using Microsoft.JSInterop
+
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+@code {
+    private string operatingSystem = "Detecting...";
+    private string architecture = "Detecting...";
+    private bool hasInitialized = false;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !hasInitialized)
+        {
+            hasInitialized = true;
+            // JavaScript interop call after the component has been rendered
+            var result = await JSRuntime.InvokeAsync<object>("navigator.userAgent");
+            if (result is not null)
+            {
+                Console.WriteLine(result);
+            } else {
+                Console.WriteLine(result);
+            }
+        }
+    }
+}
+
+
+<section>
+    <div class="hero">
+        <div class="text-center z-10">
+            <h2 class="text-3xl mb-4">Download</h2>
+            <a href="" class="btn btn-primary">
+                <span>
+                    Download
+                </span>
+                <span class="text-sm">
+                    (For @operatingSystem - @architecture)
+                </span>
+            </a>
+        </div>
+    </div>
+</section>

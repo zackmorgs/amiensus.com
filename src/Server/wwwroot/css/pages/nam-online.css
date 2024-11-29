@@ -1,0 +1,50 @@
+.amp-modeler {
+    height:520px;
+    width:784px;
+    margin:0 auto;
+    border-radius:0.5rem;
+    background:linear-gradient(132deg, #2b2c30, #16151a);
+    padding:1.25rem;
+}
+.amp-modeler .title {
+    font-size:1.68rem;
+    text-shadow:0px 0px 1rem #282a2c;
+    font-weight:200;
+}
+.nam-content {
+    margin:0 auto;
+    border-radius:2rem;
+    border:4px solid #090b0c;
+    padding:1rem;
+    height:100%;
+}
+.switches {
+    display:flex;
+    justify-content:space-around;
+}
+
+.slider {
+
+}
+.input-group {
+    padding:0.5rem;
+    width:100%;
+}
+.file-inputs {
+    display:flex;
+    flex-direction: column;
+    max-width:540px;
+    margin:0 auto;
+}
+.nam-file-input {
+    padding:3px  0.75rem;
+    background:#000000;
+    display:block;
+    width:100%;
+    border-radius:0.5rem;
+}
+
+.icon-folder {
+    height:24px;
+    width:auto;
+}

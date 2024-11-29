@@ -1,0 +1,89 @@
+#create_hero_container {
+    background: url("/img/fender-amp.jpg ");
+    background-size: cover;
+}
+.hero-bg {
+    background: linear-gradient(45deg, #284b99, #ffa50087);
+    backdrop-filter: blur(0.1rem);
+}
+#hero_create {
+    /* background: linear-gradient(45deg, #284b99, #ffa50087);
+    backdrop-filter: blur(0.125rem);
+     */
+    box-shadow:none;
+}
+
+#hero_create h2,
+#hero_create p {
+    text-shadow: 0px 0px 0.5rem rgb(0 0 0);
+}
+
+#google_colab {
+    /* margin: 1rem; */
+
+    /* box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25); */
+    /* background: #12121282; */
+}
+p {
+    font-weight: 200;
+}
+
+#colab_logo {
+    height: 5rem;
+    width: auto;
+}
+#logo_apple,
+#logo_windows {
+    height: 5rem;
+    width: auto;
+    margin:0 auto 1rem;
+}
+#computer_distributions {
+    padding-top: 1rem;  
+    margin-bottom:1rem;
+}
+.panel {
+    transition:background-color 0.3s ease-in-out;
+}
+.panel:hover {
+    background: 0, 0, 0, 0.1;
+}
+.panel .text-lg {
+    color:#919191;
+}
+#computer_distributions_container {
+    border-radius:1rem;
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1024px) {
+    /* #google_colab .panel {
+        border-radius:1rem;
+        overflow:hidden;    
+        background:rgba(0,0,0,0.125);
+    } */
+    #google_colab .panel {
+        box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25);
+        margin:1rem auto;
+        border-radius:1rem;
+        background:rgba(0,0,0,0.25);
+    }
+    #create_hero_container {
+        /* margin: 1rem 2rem; */
+        /* border-radius: 1rem; */
+        overflow: hidden;
+    }
+    #dist_panel {
+        overflow:hidden;    
+        /* padding:1rem; */
+        margin:1rem auto;
+    }
+/*    #dist_panel section {
+        border-radius:1rem;        
+        background:rgba(0,0,0,0.25);
+    }*/
+}

@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components
+@using AntDesign.Icons;
+
+@rendermode InteractiveWebAssembly
+
+@code {
+    private string? currentUrl;
+    public bool isMenuOpen = false;
+    public bool isLoaded = false;
+    protected override void OnInitialized()
+    {
+
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(1000);
+            isLoaded = true;
+            StateHasChanged();
+        }
+    }
+    public async Task ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+        await InvokeAsync(StateHasChanged);
+    }
+
+}
+
+
+<nav id="nav_menu" class="fixed top-0  right-0 left-0 @(!isLoaded ? "loading" : "")">
+    <div id="nav_container">
+        <div id="nav_bar">
+            <a href="/">
+                <h1 id="logo" class="text-sm font-bold">NEURALAMPMODELER.NET</h1>
+            </a>
+            <button
+                class="block md:hidden p-2 text-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
+                @onclick="@ToggleMenu">
+                @if (!isMenuOpen)
+                {
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                        </path>
+                    </svg>
+                }
+                else
+                {
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                }
+            </button>
+        </div>
+
+        <!-- Conditionally render "hidden" class on the #nav_items container -->
+        <div id="nav_items" class="@($"md:flex {(isMenuOpen ? "" : "hidden")} absolute md:static")">
+            @* <div id="search_container" class="p-2">
+                <div id="nav_search" class="form-group">
+                    <span class="icon">
+                        <SearchOutlined />
+                    </span>
+                    <input  type="search" id="search" placeholder="Search NAM Models..."
+                        class="rounded block w-full" />
+                </div>
+            </div> *@
+            <ul id="nav_list"
+                class="flex flex-col md:flex-row md:flex p-4 space-y-2 md:space-y-0 md:space-x-4 md:bg-transparent">
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/play" class="nav-item">
+                        Play
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/models" class="nav-item">
+                        Models
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/create" class="nav-item">
+                        Create
+                    </NavLink>
+                    
+                </li>
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/contribute" class="nav-item">
+                        Contribute
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/blog" class="nav-item">
+                        Blog
+                    </NavLink>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

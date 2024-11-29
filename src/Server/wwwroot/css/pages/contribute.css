@@ -1,0 +1,25 @@
+#contribute_hero {
+    background: linear-gradient(100deg, #2c69a9, #1c235787);
+}
+
+#contribute_grid .panel {
+    border-radius: 1rem;
+    box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.125);
+    background: rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 768px) {
+ 
+}
+
+
+@media (min-width: 1024px) { 
+
+}
+
+@media (min-width: 1280px) { 
+    
+}
+
+@media (min-width: 1536px) {
+
+}
