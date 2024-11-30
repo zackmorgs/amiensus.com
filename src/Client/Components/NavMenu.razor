@@ -72,30 +72,24 @@
             <ul id="nav_list"
                 class="flex flex-col md:flex-row md:flex p-4 space-y-2 md:space-y-0 md:space-x-4 md:bg-transparent">
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/play" class="nav-item">
-                        Play
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/" class="nav-item">
+                        Home
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/models" class="nav-item">
-                        Models
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/news" class="nav-item">
+                        News/Blog
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/create" class="nav-item">
-                        Create
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/about" class="nav-item">
+                        About
                     </NavLink>
                     
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/contribute" class="nav-item">
-                        Contribute
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/blog" class="nav-item">
-                        Blog
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/shows" class="nav-item">
+                        Shows/Tour
                     </NavLink>
                 </li>
             </ul>
