@@ -23,13 +23,12 @@
     font-size: 18px;
     font-family: "requiemtext-htf-roman", serif;
     color-scheme: dark;
-    color:#DDDDDD;
 }
 
 body {
     background-color:black;
     /* background: linear-gradient(45deg, #1b1c20, #1b1c1e); */
-    color:#f1f1f1;
+    color:#DDDDDD;
 
 }
 
