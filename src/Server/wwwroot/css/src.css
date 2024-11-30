@@ -17,7 +17,6 @@
          url('/font/requiemtext-htf-roman-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 :root {
@@ -25,7 +24,6 @@
     font-family: "requiemtext-htf-roman", serif;
     color-scheme: dark;
     color:#DDDDDD;
-
 }
 
 body {
