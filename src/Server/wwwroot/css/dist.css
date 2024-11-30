@@ -892,14 +892,36 @@ video {
   transition-duration: 150ms;
 }
 
+@font-face {
+  font-family: 'requiemfine-htf-italic';
+
+  src: url('/font/requiemfine-htf-italic-webfont.woff2') format('woff2'),
+         url('/font/requiemfine-htf-italic-webfont.woff') format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'requiemtext-htf-roman';
+
+  src: url('/font/requiemtext-htf-roman-webfont.woff2') format('woff2'),
+         url('/font/requiemtext-htf-roman-webfont.woff') format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
 :root {
   font-size: 18px;
-  font-family: "Poppins", sans-serif;
+  font-family: "requiemtext-htf-roman", serif;
   color-scheme: dark;
 }
 
 body {
-  background-color:#1b1c1e;
+  background-color:black;
   /* background: linear-gradient(45deg, #1b1c20, #1b1c1e); */
   color:#f1f1f1;
 }
@@ -928,7 +950,6 @@ p {
 }
 
 #nav_menu {
-  border-bottom:#5e89d92e 1px solid;
   box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
   /* background: linear-gradient(45deg, #1b1c20, #1b1c1e);
      */
@@ -1037,16 +1058,13 @@ p {
 }
 
 #logo {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
   margin-left: auto;
   margin-right: auto;
-  font-family: "Michroma", serif;
   font-weight: 400;
   font-style: normal;
   text-align:center;
-  color:#f1f1f1;
-  font-size: 14px;
+  color:white;
+  /* font-size: 14px; */
   text-shadow:0px 0px 1rem rgba(0,0,0,0.5);
 }
 
@@ -1280,7 +1298,6 @@ p {
 h1,
 h2,
 h3 {
-  font-family:"Michroma", serif;
   text-align:center;
 }
 
