@@ -6,6 +6,5 @@ namespace Server.Data
 {
     public class AmiensusDb(DbContextOptions<AmiensusDb> options) : IdentityDbContext<ApplicationUser>(options)
     {
-
     }
 }

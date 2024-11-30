@@ -918,6 +918,7 @@ video {
   font-size: 18px;
   font-family: "requiemtext-htf-roman", serif;
   color-scheme: dark;
+  color:#DDDDDD;
 }
 
 body {
@@ -1027,7 +1028,7 @@ p {
   top: 64px;
   right: 0;
   left: 0;
-  background: #161616;
+  background: black;
   -webkit-backdrop-filter: blur(1rem);
           backdrop-filter: blur(1rem);
   box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.5);
