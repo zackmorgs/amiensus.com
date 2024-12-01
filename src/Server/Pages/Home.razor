@@ -1,0 +1,38 @@
+﻿@page "/"
+
+@using Microsoft.AspNetCore.Components.Web
+@using Client.Components;
+@using Server.Services;
+@using Server.Models;
+
+@inject BlogPostService BlogPostService;
+
+@code {
+    public List<BlogPost> blogPosts = new List<BlogPost>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        blogPosts = await BlogPostService.GetAllBlogPosts();
+    }
+
+}
+<PageTitle>Amiensus | Home</PageTitle>
+
+<section id="hero_main_container" class="relative">
+    <div id="hero_main_overlay" class="absolute top-0 right-0 bottom-0 left-0"></div>
+    <header id="hero_main" class="hero relative">
+        <img id="hero_logo" src="/img/amiensus-logo-foil.png" alt="Amiensus Logo" class="mx-auto" />
+        @* <div id="hero_text" class="absolute bottom-0 right-0 left-0 pt-2 pb-4">
+            <p id="hero_genre" class="subititle italic">Progressive Black Metal</p>
+            <p class="subtitle">Midwestern US</p>
+        </div> *@
+    </header>
+</section>
+<section>
+    <div class="container mx-auto">
+        <h2>Latest Posts</h2>
+        <div class="blog-posts">
+
+        </div>
+    </div>
+</section>

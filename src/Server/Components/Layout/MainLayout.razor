@@ -3,13 +3,81 @@
 
 @inherits LayoutComponentBase
 
-<NavMenu />
-<main id="main">
-    @Body
-</main>
+@code {
+    public bool isLoaded = true;
+    protected override void OnInitialized()
+    {
+
+    }
+    @* protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(100); // Simulates loading time
+            isLoaded = true;
+            InvokeAsync(StateHasChanged); // Ensure the UI updates asynchronously
+        }
+    } *@
+
+}
+
+@if (!isLoaded)
+{
+    <div class="loading absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
+        <div class="loader"></div>
+    </div>
+}
+else
+{
+    <NavMenu />
+    <main id="main">
+        @Body
+    </main>
+
+}
 
 @* <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div> *@
+
+<style>
+    /* HTML:  */
+    .loader {
+        width: 45px;
+        aspect-ratio: .75;
+        --c: no-repeat linear-gradient(currentColor 0 0);
+        background:
+            var(--c) 0% 50%,
+            var(--c) 50% 50%,
+            var(--c) 100% 50%;
+        animation: l7 1s infinite linear alternate;
+    }
+
+    @@keyframes l7 {
+        0% {
+            background-size: 20% 50%, 20% 50%, 20% 50%
+        }
+
+        20% {
+            background-size: 20% 20%, 20% 50%, 20% 50%
+        }
+
+        40% {
+            background-size: 20% 100%, 20% 20%, 20% 50%
+        }
+
+        60% {
+            background-size: 20% 50%, 20% 100%, 20% 20%
+        }
+
+        80% {
+            background-size: 20% 50%, 20% 50%, 20% 100%
+        }
+
+        100% {
+            background-size: 20% 50%, 20% 50%, 20% 50%
+        }
+    }
+</style>

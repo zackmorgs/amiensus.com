@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,10 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+builder.Services.AddTransient<AlbumService>();
+builder.Services.AddTransient<BlogPostService>();
+builder.Services.AddTransient<MemberService>();
 
 var app = builder.Build();
 
@@ -87,9 +92,8 @@ using (var scope = app.Services.CreateScope())
     }
 
     // Create admin user
-    string adminEmail = "admin@example.com";
+    string adminEmail = "amiensus@gmail.com";
     string adminPassword = "Admin@1234"; // Use a strong password here
-
     var adminUser = await userManager.FindByEmailAsync(adminEmail);
     if (adminUser == null)
     {

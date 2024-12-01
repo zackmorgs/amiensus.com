@@ -145,6 +145,26 @@ namespace Server.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Server.Models.Album", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("HTMLContent")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Albums");
+                });
+
             modelBuilder.Entity("Server.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -209,6 +229,92 @@ namespace Server.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Server.Models.BlogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HTMLContent")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tags")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("BlogPosts");
+                });
+
+            modelBuilder.Entity("Server.Models.Member", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("Server.Models.Song", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("AlbumId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("HTMLContent")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AlbumId");
+
+                    b.ToTable("Song");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -258,6 +364,27 @@ namespace Server.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Server.Models.BlogPost", b =>
+                {
+                    b.HasOne("Server.Models.ApplicationUser", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("Server.Models.Song", b =>
+                {
+                    b.HasOne("Server.Models.Album", null)
+                        .WithMany("Songs")
+                        .HasForeignKey("AlbumId");
+                });
+
+            modelBuilder.Entity("Server.Models.Album", b =>
+                {
+                    b.Navigation("Songs");
                 });
 #pragma warning restore 612, 618
         }

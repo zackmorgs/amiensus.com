@@ -5,7 +5,6 @@
 @rendermode InteractiveWebAssembly
 
 @code {
-    private string? currentUrl;
     public bool isMenuOpen = false;
     public bool isLoaded = false;
     protected override void OnInitialized()
@@ -34,10 +33,10 @@
     <div id="nav_container">
         <div id="nav_bar">
             <a href="/">
-                <h1 id="logo" >amiensus.com</h1>
+                <h1 id="logo" class="transparent" >amiensus.com</h1>
             </a>
             <button
-                class="block md:hidden p-2 text-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
+                class="block md:hidden p-2  rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
                 @onclick="@ToggleMenu">
                 @if (!isMenuOpen)
                 {
@@ -77,8 +76,8 @@
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/news" class="nav-item">
-                        News/Blog
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/blog" class="nav-item">
+                        Blog
                     </NavLink>
                 </li>
                 <li>
@@ -88,8 +87,8 @@
                     
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/shows" class="nav-item">
-                        Shows/Tour
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/tour" class="nav-item">
+                        Tour
                     </NavLink>
                 </li>
             </ul>

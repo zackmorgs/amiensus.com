@@ -13,5 +13,7 @@ namespace Server.Models
 
         [Required]
         public string HTMLContent { get; set; } // HTML string for the blog content
+
+        public List<Song> Songs { get; set; }
     }
 }

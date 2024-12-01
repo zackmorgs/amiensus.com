@@ -19,6 +19,10 @@
     font-style: normal;
 }
 
+.italic, i {
+    font-family: 'requiemfine-htf-italic';
+}
+
 :root {
     font-size: 18px;
     font-family: "requiemtext-htf-roman", serif;
@@ -26,14 +30,27 @@
 }
 
 body {
-    background-color:black;
+    /* background-color:black; */
+    background-image:url('/img/bg-b&w@0.5.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
     /* background: linear-gradient(45deg, #1b1c20, #1b1c1e); */
-    color:#DDDDDD;
-
+    color:#e7c029fc;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
 }
 
 #app {
-    @apply relative;
+    @apply absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
 }
 #main {
     @apply relative;
@@ -59,7 +76,9 @@ p {
     backdrop-filter: blur(0.5rem);
     z-index:100; 
 }
-
+.transparent {
+    opacity:0.0;
+}
 #logo:hover {
     text-shadow:0px 0px 0.5rem rgba(225,225,225,0.5);
 }
@@ -92,7 +111,6 @@ p {
     font-size:1.25rem;
 }
 
-
 #nav_search {   
     @apply relative;
 }
@@ -122,11 +140,32 @@ p {
     /* font-size: 14px; */
     text-shadow:0px 0px 1rem rgba(0,0,0,0.5);
 }
-#hero_container {
-    background:linear-gradient(45deg, #1e1f23, #1b1c1e);
-    background:linear-gradient(45deg, #141414, #111111);
-    
+#hero_main_container {
+    background:url('/img/potential-bg-bw@0.5x.png');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
 }
+#hero_logo {
+    filter:drop-shadow(0px 0px 1rem rgba(0,0,0,0.5));
+}
+
+#hero_main_overlay {
+    background: linear-gradient(0deg, #000000ad, transparent);
+    z-index: 1;
+}
+#hero_main {
+    z-index:10;
+}
+
+#hero_text {
+    background: rgb(0 0 0 / 50%);
+}
+
+#hero_genre {
+    font-size:1.25rem;
+}
+
 .hero {
     @apply container;
     @apply mx-auto;
@@ -135,7 +174,7 @@ p {
     text-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 1.0);
     /* border-bottom-right-radius:0.5rem;
     border-bottom-left-radius:0.5rem; */
-    box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25);
+    /* box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25); */
 }
 .hero h1 {
     font-family: "Michroma", serif;
@@ -327,7 +366,7 @@ h3 {
         top:58px;
     }
     #nav_menu {
-        background:linear-gradient(45deg, #1b1c2080, #1b1c1e8c);
+        background:black;
     }
     #nav_items {
         background:none;

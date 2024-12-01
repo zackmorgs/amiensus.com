@@ -27,5 +27,7 @@ namespace Server.Models
         public string Tags { get; set; } // Comma-separated tags
 
         public bool IsPublished { get; set; } = false; // Draft or Published
+
+        public ApplicationUser Owner { get; set; } // Navigation property
     }
 }

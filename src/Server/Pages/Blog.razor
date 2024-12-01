@@ -2,6 +2,39 @@
 
 @using Microsoft.AspNetCore.Components.Web
 @using Client.Components;
+@using Server.Models;
+@using Server.Services;
+
+@inject BlogPostService BlogPostService;
+
+@code {
+    private List<BlogPost> LastFourBlogPosts = new List<BlogPost>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        LastFourBlogPosts = await BlogPostService.LastFourBlogPosts();
+    }
+
+}
 
 <PageTitle>Amiensus | News/Blog</PageTitle>
 
+<section id="blog_hero_container">
+    <header class="hero">
+        <h1 class="text-4xl">Blog</h1>
+    </header>
+</section>
+
+<section>
+    <div class="container mx-auto">
+        <h2>Latest Posts</h2>
+        <div class="blog-posts">
+            @foreach (var post in LastFourBlogPosts)
+            {
+                <div class="blog-post">
+                    <h3 class="text-xl">@post.Title</h3>
+                </div>
+            }
+        </div>
+    </div>
+</section>
