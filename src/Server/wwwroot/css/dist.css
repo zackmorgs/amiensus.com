@@ -941,7 +941,7 @@ video {
 
 body {
   /* background-color:black; */
-  background-image:url('/img/bg-b&w@0.5.png');
+  background-image:url('/img/bg-b&w@0.5x.png');
   background-size:cover;
   background-repeat:no-repeat;
   background-position:50% 50%;
@@ -985,6 +985,7 @@ p {
   box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
   /* background: linear-gradient(45deg, #1b1c20, #1b1c1e);
      */
+  background-color:rgba(0,0,0,0.75);
   -webkit-backdrop-filter: blur(0.5rem);
           backdrop-filter: blur(0.5rem);
   z-index:100;

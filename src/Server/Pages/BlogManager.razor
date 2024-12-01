@@ -1,0 +1,22 @@
+@page "/blog/manage";
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <section>
+            <header class="hero">
+                <h2 class="text-3xl">Blog Manager</h2>
+            </header>
+        </section>
+    </Authorized>
+    <NotAuthorized>
+        <section>
+            <header class="hero">
+                <h2 class="text-3xl text-red-500">Access Denied</h2>
+                <p>You do not have permission to view this page.</p>
+            </header>
+        </section>
+    </NotAuthorized>
+</AuthorizeView>
