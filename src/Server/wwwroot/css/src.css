@@ -28,36 +28,43 @@
     font-family: "requiemtext-htf-roman", serif;
     color-scheme: dark;
 }
-
-body {
-    /* background-color:black; */
+*::selection {
+    background: red;
+    color:white;
+}
+.btn::selection,
+button::selection {
+    background:none;
+}
+body,
+.text-yellow {
+    color:#e7c029fc;
+}
+.text-blue {
+    color:#45a7c7fc;
+}
+#app {
     background-image:url('/img/bg-b&w@0.5x.png');
     background-repeat:no-repeat;
     background-size:cover;
     background-repeat:no-repeat;
+    background-attachment: scroll;
     background-position:50% 50%;
-    /* background: linear-gradient(45deg, #1b1c20, #1b1c1e); */
-    color:#e7c029fc;
-    position:absolute;
+    /* @apply absolute;
     top:0;
     right:0;
     bottom:0;
-    left:0;
+    left:0; */
 }
-
-#app {
-    @apply absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-}
-#main {
+/* #main {
     @apply relative;
     top: 64px;
     right:0;
     bottom:0;
     left:0;
+} */
+#main {
+    margin-top:64px;
 }
 .container {
     transition:width 0.3s ease-in-out;
@@ -68,6 +75,14 @@ p {
     text-align:center;
     margin:0 auto;
     font-weight:200;
+    margin-bottom:1rem;
+}
+.panel p,
+.panel ul {
+    color:white;
+}
+.panel {
+    text-align:left;
 }
 #nav_menu {
     box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
@@ -110,6 +125,40 @@ p {
     backdrop-filter: blur(1rem);
     box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.5);
     font-size:1.25rem;
+}
+
+.nav-item {
+    display:block;
+    text-align:center;
+    font-size:1.5rem;
+}
+#nav_list .nav-item {
+    padding:0.5rem;
+    border-radius:0.5rem;
+    background:rgb(11 11 11);
+    transition: all ease 0.3s;
+}
+.nav-item span + .icon {
+    margin-left:0.25rem;
+}
+#account_label {
+
+}
+#account_container {
+    margin:1rem;
+    border-radius:0.5rem;
+    background:rgb(225 225 225 / 5%);
+}
+#account_container .nav-item {
+    padding:0.5rem 1rem;
+    font-size:1rem;
+}
+#account_container .hr.rule {
+    border-color: yellow;
+}
+#account_btns {
+    border-radius:0.5rem;
+    background:#080808;
 }
 
 #nav_search {   
@@ -166,7 +215,15 @@ p {
 #hero_genre {
     font-size:1.25rem;
 }
-
+hr {
+    border-color:currentColor;
+}
+hr.rule {
+    max-width: 2rem;
+    @apply mx-auto;
+    border:0;
+    border-bottom: 3px solid #295a6dfa;
+}
 .hero {
     @apply container;
     @apply mx-auto;
@@ -191,8 +248,19 @@ p {
 .hero .btn {
     @apply mt-6 mb-4;
     font-size:1.5rem;
-    box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.3333);
-    text-shadow: 0px 0px 0.5rem #ffffff75;
+    box-shadow: 0 0 1rem rgb(0 0 0 / 65%);
+    /* min-width:6ch; */
+}
+/* .hero .btn .icon {
+    height:1.25rem;
+    width:auto;
+} */
+.hero .btn-lg {
+    padding:0.5rem 3rem;
+}
+.hero .btn-lg .icon {
+    height:3rem;
+    width:auto;
 }
 .btn {
     @apply py-3 px-6;
@@ -203,11 +271,17 @@ p {
     text-align:center;
     /* background: linear-gradient(45deg, #111111, #0f0e0e, #000000, #131313); */
     background:#0d0e0f;
+
     box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.3333);
     /* text-shadow: 0px 0px 0.5rem #ffffff75; */
     /* border:1px solid #f1f1f1; */
 
     transition:all ease-in 0.3s;
+    margin-right:0.25rem;
+    margin-left:0.25rem;
+}
+.btn.btn-white {
+    background:#ffffff;
 }
 .btn .icon + span {
     margin-left:0.25rem;
@@ -221,7 +295,8 @@ p {
 }
 .btn-primary {
     border:none;
-
+    background: #000038;
+    color:white;
     /* box-shadow:inset 0px 0px 0.25rem rgb(0, 0, 0); */
     /* border:3px solid rgba(255,255,255,0.25); */
 }
@@ -253,6 +328,7 @@ p {
     font-size:1rem;
 }
 
+
 .rule {
     max-width: 8%;
     @apply mx-auto;
@@ -260,45 +336,10 @@ p {
     border-bottom: 3px solid #295a6dfa;
 }
 
-.accordion-header {
-    @apply flex;
-    @apply flex-row;
-    @apply items-center;
-    @apply justify-between;
-    @apply p-2;
-    border-bottom:1px solid #f1f1f1;
-    cursor:pointer;
-}
-.accordion-header .caret {
-    max-width:1rem;
-    height:auto;
-}
-.accordion-body {
-
-}
-.accordion-body.open {
-    transition:height 0.5s ease-in-out;
-    height:initial;
-    overflow-y:initial;
-    @apply p-2;
-}
-.accordion-body.closed {
-    height:0px;
-    overflow-y:hidden;
+#no-posts {
+    color:#ada9a9;
 }
 
-#footer {
-    background:linear-gradient(45deg, #1e1f23, #1b1c1e);
-    text-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 1.0);
-    /* border-bottom-right-radius:0.5rem;
-    border-bottom-left-radius:0.5rem; */
-    /* box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25); */
-    background: linear-gradient(360deg, #000000, #0e0e0e);
-    text-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 1.0);
-    box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25);
-    border-top: 1px solid #002647a3;
-
-}
 #code {
     /* background:white; */
     /* color:black; */
@@ -335,8 +376,10 @@ h3 {
 
 .panel {
     padding: 1rem;
-    border-radius: 1rem;
-    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    /* background: rgba(0, 0, 0, 0.5);
+     */
+     background: rgb(49 49 49 / 50%);
 }
 
 .icon {
@@ -349,13 +392,11 @@ h3 {
 } 
 
 
-#footer a {
-    color: #0af;
-    text-decoration: none;
-    margin: 5px;
+#footer {
+    background:black;
 }
-#footer h3 {
-    text-transform:uppercase;
+#copy {
+    color:#ada9a9;
 }
 @media (min-width: 414px) {
 
@@ -366,8 +407,19 @@ h3 {
     #main {
         top:58px;
     }
+    #nav_list,
+    #account_container {
+        padding:0;
+    }
+    #account_container {
+        margin:0 1rem;
+        background:none;
+    }
     #nav_menu {
         background:black;
+    }
+    #nav_bar {
+    
     }
     #nav_items {
         background:none;
@@ -378,13 +430,25 @@ h3 {
     .nav-item {
         padding:1rem 0.25rem 19px;
         transition: all ease 0.3s;
+        font-size:1rem;
     }
-    .active {
+    #nav_list .nav-item {
+        padding:1rem 0.25rem 19px;
+        border-radius:0;
+        background:none;
+        margin:0;
+    }
+
+    #nav_list .nav-item.active {
         color:white;
         text-shadow:0px 0px 0.5rem rgba(225,225,255,0.75);
-        border-bottom:1px solid #41819d61;
-
+        border-bottom:2px solid rgba(231, 192, 41, 0.99);
     }
+
+    #hero_logo {
+        max-width:55ch;
+    }
+
     .hero p {
         font-size:1.5rem;
 
@@ -400,6 +464,13 @@ h3 {
 
 
 @media (min-width: 1024px) { 
+
+    #nav_list {
+        margin-right:1rem;
+    }
+    #hero_logo {
+        max-width:75ch;
+    }
     .hero {
         box-shadow:none;
     }

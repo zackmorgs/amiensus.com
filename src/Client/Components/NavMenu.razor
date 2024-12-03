@@ -29,14 +29,13 @@
 }
 
 
-<nav id="nav_menu" class="fixed top-0  right-0 left-0 @(!isLoaded ? "loading" : "")">
+<nav id="nav_menu" class="fixed top-0  right-0 left-0 @(!isLoaded ? "loading" : "") @(isMenuOpen ? " open" : "")">
     <div id="nav_container">
         <div id="nav_bar">
             <a href="/">
-                <h1 id="logo" class="transparent" >amiensus.com</h1>
+                <h1 id="logo" class="transparent">amiensus.com</h1>
             </a>
-            <button
-                class="block md:hidden p-2  rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
+            <button class="block md:hidden p-2  rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
                 @onclick="@ToggleMenu">
                 @if (!isMenuOpen)
                 {
@@ -71,27 +70,50 @@
             <ul id="nav_list"
                 class="flex flex-col md:flex-row md:flex p-4 space-y-2 md:space-y-0 md:space-x-4 md:bg-transparent">
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/" class="nav-item">
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/" class="nav-item"
+                        Match="NavLinkMatch.All">
                         Home
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/blog" class="nav-item">
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/about" Match="NavLinkMatch.Prefix"
+                        class="nav-item">
+                        About
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/contact" Match="NavLinkMatch.Prefix"
+                        class="nav-item">
+                        Contact
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/blog" Match="NavLinkMatch.Prefix"
+                        class="nav-item">
                         Blog
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/about" class="nav-item">
-                        About
-                    </NavLink>
-                    
-                </li>
-                <li>
-                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/tour" class="nav-item">
+                    <NavLink activeClass="active" @onclick="@ToggleMenu" href="/tour" Match="NavLinkMatch.Prefix"
+                        class="nav-item">
                         Tour
                     </NavLink>
                 </li>
             </ul>
+            <div id="account_container" class="p-4 flex flex-col items-center justify-center">
+
+                <div id="account_btns" class="flex flex-row justify-between items-center">
+                    <a href="/Account/Login" class="nav-item" activeClass="active" @onclick="@ToggleMenu"
+                        Match="NavLinkMatch.Prefix">
+                        <span>Login</span>
+
+                    </a>
+                    <a href="/Account/Register" class="nav-item" activeClass="active" @onclick="@ToggleMenu"
+                        Match="NavLinkMatch.Prefix">
+                        Register
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
