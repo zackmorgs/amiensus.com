@@ -2,6 +2,7 @@
 
 @using Microsoft.AspNetCore.Components.Web
 @using Client.Components;
+@using AntDesign.Icons;
 
 <PageTitle>Amiensus | Contact</PageTitle>
 
@@ -10,5 +11,28 @@
         <h1 class="text-4xl">
             Contact
         </h1>
+        <hr class="rule mt-4">
     </header>
+</section>
+<section>
+    <div class="max-w-lg mx-auto">
+        <div class="p-4">
+            <div class="panel">
+                <img src="/img/amiensus-2021-2.jpg" alt="Amiensus 2021 Lineup" class="w-full mb-4 rounded"/>
+                <p>
+                    We would love to hear from you! Please feel free to reach out to us with any questions, comments, or
+                    concerns.
+                </p>
+                <p>
+                    You can contact us via email at <a class="underline-offset-2 underline"
+                        href="mailto:amiensus@gmail.com">amiensus@gmail.com</a>
+                </p>
+                <div class="flex flex-row justify-center items-center">
+                    <a class="btn">
+                        <MailOutlined class="icon"/> <span>Email Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
