@@ -629,6 +629,11 @@ video {
   margin-right: auto;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -649,8 +654,8 @@ video {
   margin-bottom: 1.5rem;
 }
 
-.ml-4 {
-  margin-left: 1rem;
+.ml-6 {
+  margin-left: 1.5rem;
 }
 
 .mr-2 {
@@ -667,10 +672,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-6 {
-  margin-left: 1.5rem;
 }
 
 .block {
@@ -719,6 +720,10 @@ video {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-screen-lg {
+  max-width: 1024px;
 }
 
 .max-w-xl {
@@ -865,6 +870,10 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-left {
@@ -1081,6 +1090,10 @@ p {
 
 .panel {
   text-align:left;
+}
+
+.panel.panel-danger {
+  background:#5c1616;
 }
 
 #nav_menu {
@@ -1614,6 +1627,15 @@ h3 {
   .nav-item:hover {
     border-bottom:1px solid #41819d61;
     text-shadow:0px 0px 1rem rgba(225,225,255,0.75);
+  }
+
+  #account_btns {
+    overflow:hidden;
+  }
+
+  #account_container .nav-item:hover {
+    border:none;
+    background:#2a2929;
   }
 
   .affiliate-img {

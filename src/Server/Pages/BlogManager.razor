@@ -1,4 +1,4 @@
-@page "/blog/manage";
+@page "/blog/admin";
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
 @attribute [Authorize(Roles = "Admin")]
@@ -13,10 +13,10 @@
     </Authorized>
     <NotAuthorized>
         <section>
-            <header class="hero">
-                <h2 class="text-3xl text-red-500">Access Denied</h2>
+            <div class="max-w-md mx-auto">
+                <h2 class="text-3xl text-red-500 panel">Access Denied</h2>
                 <p>You do not have permission to view this page.</p>
-            </header>
+            </div>
         </section>
     </NotAuthorized>
 </AuthorizeView>

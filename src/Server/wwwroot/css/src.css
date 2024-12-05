@@ -84,6 +84,9 @@ p {
 .panel {
     text-align:left;
 }
+.panel.panel-danger {
+    background:#5c1616;
+}
 #nav_menu {
     box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
     /* background: linear-gradient(45deg, #1b1c20, #1b1c1e);
@@ -482,6 +485,13 @@ h3 {
     .nav-item:hover {
         border-bottom:1px solid #41819d61;
         text-shadow:0px 0px 1rem rgba(225,225,255,0.75);
+    }
+    #account_btns {
+        overflow:hidden;
+    }
+    #account_container .nav-item:hover {
+        border:none;
+        background:#2a2929;
     }
     .affiliate-img {
         max-width: 10rem;

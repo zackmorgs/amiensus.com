@@ -1,15 +1,22 @@
 ﻿@using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components
 @using AntDesign.Icons;
+@using Microsoft.AspNetCore.Identity;
+@using Server.Models;
 
-@rendermode InteractiveWebAssembly
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject SignInManager<ApplicationUser> _signInManager
+@inject NavigationManager Navigation
 
 @code {
+    private bool isAuthenticated = false;
     public bool isMenuOpen = false;
     public bool isLoaded = false;
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -24,6 +31,12 @@
     {
         isMenuOpen = !isMenuOpen;
         await InvokeAsync(StateHasChanged);
+    }
+
+    public async Task Logout()
+    {
+        await _signInManager.SignOutAsync();
+        Navigation.NavigateTo("/");
     }
 
 }
@@ -101,18 +114,23 @@
                 </li>
             </ul>
             <div id="account_container" class="p-4 flex flex-col items-center justify-center">
-
-                <div id="account_btns" class="flex flex-row justify-between items-center">
-                    <a href="/Account/Login" class="nav-item" activeClass="active" @onclick="@ToggleMenu"
-                        Match="NavLinkMatch.Prefix">
-                        <span>Login</span>
-
-                    </a>
-                    <a href="/Account/Register" class="nav-item" activeClass="active" @onclick="@ToggleMenu"
-                        Match="NavLinkMatch.Prefix">
-                        Register
-                    </a>
-                </div>
+                @if (isAuthenticated)
+                {
+                    <!-- Show options for authenticated users -->
+                    <div id="account_btns" class="flex flex-row justify-between items-center">
+                        <a href="/Account/Manage" class="nav-item" activeClass="active" @onclick="@ToggleMenu"><UserOutlined /></a>
+                        <a  class="nav-item" activeClass="active" @onclick="@Logout"><LogoutOutlined /></a>
+                    </div>
+                }
+                else
+                {
+                    <!-- Show options for unauthenticated users -->
+                    <div id="account_btns" class="flex flex-row justify-between items-center">
+                        <a href="/Account/Login" class="nav-item" activeClass="active" @onclick="@ToggleMenu">Login</a>
+                        <a href="/Account/Register" class="nav-item" activeClass="active"
+                            @onclick="@ToggleMenu">Register</a>
+                    </div>
+                }
             </div>
         </div>
     </div>
