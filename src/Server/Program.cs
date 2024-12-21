@@ -20,7 +20,10 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-builder.Services.AddTransient<SignInManager<ApplicationUser>>();
+// builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+// builder.Services.AddTransient<SignInManager<ApplicationUser>>();
+// builder.Services.AddSingleton<SignInManager<ApplicationUser>>();
+// builder.Services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddAuthentication(options =>
     {
@@ -41,6 +44,8 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddSignInManager()
     .AddUserManager<UserManager<ApplicationUser>>()
     .AddDefaultTokenProviders();
+
+
 
 // builder.Services.AddAuthentication()
 //    .AddGoogle(options =>
@@ -129,6 +134,9 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(adminUser, adminRole);
     }
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 

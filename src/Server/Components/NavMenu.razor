@@ -2,22 +2,24 @@
 @using Microsoft.AspNetCore.Components
 @using AntDesign.Icons;
 @using Microsoft.AspNetCore.Identity;
-@using Server.Models;
 
-@rendermode InteractiveWebAssembly
+@rendermode InteractiveServer
 
-@inject AuthenticationStateProvider AuthenticationStateProvider
-@inject SignInManager<ApplicationUser> _signInManager
-@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+@inject NavigationManager Navigation;
+@* @inject IHttpContextAccessor HttpContextAccessor; *@
 
 @code {
     private bool isAuthenticated = false;
     public bool isMenuOpen = false;
     public bool isLoaded = false;
+
+    private string? currentUrl;
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
+        currentUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -33,13 +35,6 @@
         isMenuOpen = !isMenuOpen;
         await InvokeAsync(StateHasChanged);
     }
-
-    public async Task Logout()
-    {
-        await _signInManager.SignOutAsync();
-        Navigation.NavigateTo("/");
-    }
-
 }
 
 
@@ -119,8 +114,16 @@
                 {
                     <!-- Show options for authenticated users -->
                     <div id="account_btns" class="flex flex-row justify-between items-center">
-                        <a href="/Account/Manage" class="nav-item" activeClass="active" @onclick="@ToggleMenu"><UserOutlined /></a>
-                        <a  class="nav-item" activeClass="active" @onclick="@Logout"><LogoutOutlined /></a>
+                        <a href="/Account/Manage" class="nav-item" activeClass="active" @onclick="@ToggleMenu">
+                            <UserOutlined />
+                        </a>
+                        <form action="Account/Logout" method="post">
+                            <AntiforgeryToken />
+                            <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                            <button class="nav-item" type="submit">
+                                <LogoutOutlined />
+                            </button>
+                    </form>
                     </div>
                 }
                 else

@@ -29,8 +29,8 @@
     color-scheme: dark;
 }
 *::selection {
-    background: red;
-    color:white;
+    background: rgba(231, 192, 41, 0.99);
+    color:black;
 }
 .btn::selection,
 button::selection {

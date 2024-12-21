@@ -4,28 +4,28 @@
 
 @inject SignInManager<ApplicationUser> SignInManager
 
-<ul id="account_nav_list" class="flex flex-row items-center justify-between">
-    <li class="nav-item">
+<ul id="account_nav_list" class="flex flex-row items-center justify-between mx-auto max-w-sm ">
+    <li>
         <NavLink class="nav-link"  ActiveClass="active" href="Account/Manage" Match="NavLinkMatch.All">Profile</NavLink>
     </li>
-    <li class="nav-item">
+    <li>
         <NavLink class="nav-link"  ActiveClass="active" href="Account/Manage/Email">Email</NavLink>
     </li>
-    <li class="nav-item">
+    <li>
         <NavLink class="nav-link"  ActiveClass="active" href="Account/Manage/ChangePassword">Password</NavLink>
     </li>
     @if (hasExternalLogins)
     {
-        <li class="nav-item">
+        <li>
             <NavLink class="nav-link"  ActiveClass="active" href="Account/Manage/ExternalLogins">External logins</NavLink>
         </li>
     }
-    @* <li class="nav-item">
+    @* <li>
         <NavLink class="nav-link"  ActiveClass="active" href="Account/Manage/TwoFactorAuthentication">Two-factor authentication</NavLink>
     </li> *@
-    <li class="nav-item">
+    @* <li>
         <NavLink class="nav-link"  ActiveClass="active" href="Account/Manage/PersonalData">Personal data</NavLink>
-    </li>
+    </li> *@
 </ul>
 
 @code {
