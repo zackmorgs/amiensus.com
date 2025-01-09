@@ -9,7 +9,7 @@
 @using Server.Services;
 
 
-@* @attribute [Authorize(Roles = "Admin")] *@
+@attribute [Authorize(Roles = "Admin")]
 
 @inject BlogPostService BlogPostService;
 
@@ -29,7 +29,7 @@
 
 <section id="blog_hero_container">
     <header class="hero">
-        <h1 class="text-4xl">Blog</h1>
+        <h1 class="text-4xl uppercase">Blog</h1>
         <hr class="rule mt-4">
     </header>
 </section>
@@ -39,7 +39,7 @@
         <div class="p-4">
             <div class="panel">
                 <h2>Latest Posts</h2>
-                <hr class="rule mt-2"/>
+                <hr class="rule mt-2" />
                 <div class="blog-posts">
                     @if (LastFourBlogPosts.Count > 0)
                     {
@@ -59,3 +59,12 @@
         </div>
     </div>
 </section>
+<AuthorizeView Roles="Admin">
+    <section>
+        <div class="w-max-sm mx-auto flex items-center justify-center">
+            <a href="/blog/admin" class="btn mx-auto my-4">
+                Manage Blog
+            </a>
+        </div>
+    </section>
+</AuthorizeView>

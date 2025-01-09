@@ -1,0 +1,63 @@
+@page "/blog/admin";
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+
+@using Server.Services;
+@using Server.Models;
+
+@inject BlogPostService BlogPostService;
+
+@attribute [Authorize(Roles = "Admin")]
+
+@code {
+    private List<BlogPost> AllBlogPosts = new List<BlogPost>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllBlogPosts = await BlogPostService.GetAllBlogPosts();
+    }
+
+}
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <section>
+            <header class="hero">
+                <h2 class="text-3xl uppercase">Blog Manager</h2>
+            </header>
+        </section>
+        <section>
+            <div class="max-w-sm mx-auto">
+                @if (AllBlogPosts.Count > 0)
+                {
+                    <div class="panel m-4">
+                        <h2>All Blog Posts</h2>
+                        <hr class="rule mt-2" />
+
+                    </div>
+                }
+                else
+                {
+                    <div class="panel m-4">
+                        <h2>No Blog Posts</h2>
+                        <hr class="rule m-4"/>
+                        <div class="flex items-center justify-center">
+                            <a href="/blog/create" class="btn mx-auto">
+                                Create a Blog Post
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </section>
+    </Authorized>
+    <NotAuthorized>
+        <section>
+            <div class="max-w-md mx-auto">
+                <h2 class="text-3xl text-red-500 panel">Access Denied</h2>
+                <p>You do not have permission to view this page.</p>
+            </div>
+        </section>
+    </NotAuthorized>
+</AuthorizeView>

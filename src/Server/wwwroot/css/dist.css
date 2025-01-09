@@ -628,19 +628,23 @@ video {
   margin: 0px;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mb-1 {
@@ -735,12 +739,12 @@ video {
   max-width: 1024px;
 }
 
-.max-w-xl {
-  max-width: 36rem;
-}
-
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .list-disc {
@@ -937,6 +941,10 @@ video {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .italic {
@@ -1228,6 +1236,9 @@ p {
 #account_container .nav-item {
   padding:0.5rem 1rem;
   font-size:1rem;
+  display:flex;
+  align-items:center;
+  justify-content: center;
 }
 
 #account_container .hr.rule {
@@ -1359,7 +1370,7 @@ hr.rule {
 }
 
 .hero h1 {
-  font-family: "Michroma", serif;
+  /* font-family: "Michroma", serif; */
 }
 
 .hero p {

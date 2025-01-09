@@ -155,6 +155,9 @@ p {
 #account_container .nav-item {
     padding:0.5rem 1rem;
     font-size:1rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
 }
 #account_container .hr.rule {
     border-color: yellow;
@@ -238,7 +241,7 @@ hr.rule {
     /* box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 0.25); */
 }
 .hero h1 {
-    font-family: "Michroma", serif;
+    /* font-family: "Michroma", serif; */
 }
 .hero p {
     font-weight: 200;

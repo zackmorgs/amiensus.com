@@ -1,0 +1,50 @@
+@page "/blog/create";
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Web
+@using Client.Components;
+@using Server.Models;
+@using Server.Services;
+@using Microsoft.AspNetCore.Components.Forms;
+@using TinyMCE.Blazor
+
+@attribute [Authorize(Roles = "Admin")]
+
+@code {
+    private string PostTitle { get; set; } = "";
+    private string PostContent { get; set; } = "";
+}
+
+<script src="_framework/blazor.server.js"></script>
+<script src="_content/TinyMCE.Blazor/tinymce-blazor.js"></script>
+<script src="_framework/blazor.webassembly.js"></script>
+<script src=" _content/TinyMCE.Blazor/tinymce-blazor.js"></script>
+<AuthorizeView Roles="Admin">
+    <Authorized>
+
+        <section>
+            <header class="hero">
+                <h2 class="text-3xl uppercase">Create a Blog Post</h2>
+            </header>
+        </section>
+        <section>
+            <div class="max-w-xl mx-auto">
+                <div class="panel m-4">
+                    <InputText id="post_title" class="blog w-full mb-4 p-4" @bind-Value="@PostTitle" />
+                    <Editor @bind-Value="@PostContent" />
+                </div>
+            </div>
+        </section>
+
+
+    </Authorized>
+    <NotAuthorized>
+        <section>
+            <div class="max-w-md mx-auto">
+                <h2 class="text-3xl text-red-500 panel">Access Denied</h2>
+                <p>You do not have permission to view this page.</p>
+            </div>
+        </section>
+    </NotAuthorized>
+</AuthorizeView>
